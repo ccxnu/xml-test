@@ -1,0 +1,20 @@
+@WebAPI_HostAddress = http://localhost:5148
+
+POST {{WebAPI_HostAddress}}/api/xml/process
+Content-Type: application/xml
+
+<Type1Request>
+    <Name>Juan</Name>
+</Type1Request>'
+
+###
+
+POST {{WebAPI_HostAddress}}/api/xml/process
+Content-Type: application/xml
+
+<Type2Request>
+    <Name>Nombre aquí</Name>
+    <Title>Título aquí</Title>
+</Type2Request>
+
+###
