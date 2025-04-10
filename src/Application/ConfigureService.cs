@@ -12,7 +12,7 @@ public static class DependencyInjection
         // 2. Registra Chain of Responsibility
         services.AddTransient<ICommandGenerator, Type1CommandGenerator>();
         services.AddTransient<ICommandGenerator, Type2CommandGenerator>();
-        services.AddSingleton<ICommandGeneratorFactory, CommandGeneratorFactory>();
+        services.AddSingleton<ICommandGeneratorFactory, CommandGeneratorFactory>();  // Singleton para el Factory
 
         // (Opcional) Otros servicios de aplicación
         // services.AddScoped<IMyService, MyService>();

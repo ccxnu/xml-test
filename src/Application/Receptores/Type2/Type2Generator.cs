@@ -8,8 +8,10 @@ public class Type2CommandGenerator : ICommandGenerator
     public IRequest<BaseResponse> GenerateCommand(string content)
     {
         var serializer = new XmlSerializer(typeof(Type2Request));
-        using var reader = new StringReader(content);
-        var request = (Type2Request)serializer.Deserialize(reader)!;
-        return new Type2Command(request.Name, request.Title);
+        using (var reader = new StringReader(content))
+        {
+            var request = (Type2Request)serializer.Deserialize(reader)!;
+            return new Type2Command(request.Name, request.Title);
+        }
     }
 }

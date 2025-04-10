@@ -15,7 +15,7 @@ public class XmlController : ControllerBase
     }
 
     [HttpPost("process")]
-    public async Task<IResult> ProcessXml()
+    public async Task<IResult> ProcessXml(CancellationToken cancellationToken)
     {
         using var reader = new StreamReader(Request.Body);
         var content = await reader.ReadToEndAsync();
@@ -23,7 +23,7 @@ public class XmlController : ControllerBase
         try
         {
             var command = _commandGeneratorFactory.GetGenerator(content).GenerateCommand(content);
-            var result = await _mediator.Send(command);
+            var result = await _mediator.Send(command, cancellationToken);
 
             return Results.Extensions.Xml(result);
         }
